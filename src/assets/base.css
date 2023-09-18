@@ -1,0 +1,63 @@
+/* Color palette */
+:root {
+	--primary-color-light: 236, 49, 184;
+	--secondary-color-light: 121, 60, 104;
+	--hover-color-light: 145, 29, 113;
+	--shadow-color-light: 28, 2, 21;
+	--text-color-light: 35, 33, 33;
+	--background-color-light: 245, 238, 245;
+
+	--primary-color-dark: 236, 49, 184;
+	--secondary-color-dark: 121, 60, 104;
+	--hover-color-dark: 145, 29, 113;
+	--text-color-dark: 245, 238, 245;
+	--background-color-dark: 47, 42, 46;
+}
+
+:root {
+	--primary-color: rgb(var(--primary-color-dark));
+	--primary-color-alpha: rgba(var(--primary-color-dark), 0);
+	--secondary-color: rgb(var(--secondary-color-dark));
+	--shadow-color-20: rgba(var(--shadow-color-dark), 0.2);
+	--hover-color: rgb(var(--hover-color-dark));
+	--text-color: rgb(var(--text-color-dark));
+	--background-color: rgb(var(--background-color-dark));
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--primary-color: rgb(var(--primary-color-light));
+		--primary-color-alpha: rgba(var(--primary-color-light), 0);
+		--secondary-color: rgb(var(--secondary-color-light));
+		--shadow-color-20: rgba(var(--shadow-color-light), 0.2);
+		--hover-color: rgb(var(--hover-color-light));
+		--text-color: rgb(var(--text-color-light));
+		--background-color: rgb(var(--background-color-light));
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	font-weight: normal;
+}
+
+body {
+	min-height: 100vh;
+	color: var(--text-color);
+	background: var(--background-color);
+	/* transition: color 0.5s, background-color 0.5s; */
+	line-height: 1.6;
+	font-family: 'Roboto Flex', sans-serif;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
