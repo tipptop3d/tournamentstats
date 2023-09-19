@@ -1,38 +1,49 @@
 /* Color palette */
 :root {
 	--primary-color-light: 236, 49, 184;
-	--secondary-color-light: 121, 60, 104;
+	--highlight-color-light: 121, 60, 104;
 	--hover-color-light: 145, 29, 113;
 	--shadow-color-light: 28, 2, 21;
 	--text-color-light: 35, 33, 33;
 	--background-color-light: 245, 238, 245;
+	--background-color-light-darker: 201, 183, 201;
+	--background-color-light-ligher: 255, 245, 255;
 
 	--primary-color-dark: 236, 49, 184;
-	--secondary-color-dark: 121, 60, 104;
+	--highlight-color-dark: 242, 99, 201;
 	--hover-color-dark: 145, 29, 113;
+	--shadow-color-dark: 28, 2, 21;
 	--text-color-dark: 245, 238, 245;
 	--background-color-dark: 47, 42, 46;
+	--background-color-dark-darker: 31, 28, 30;
+	--background-color-dark-ligher: 48, 42, 46;
 }
 
 :root {
 	--primary-color: rgb(var(--primary-color-dark));
 	--primary-color-alpha: rgba(var(--primary-color-dark), 0);
-	--secondary-color: rgb(var(--secondary-color-dark));
+	--highlight-color: rgb(var(--highlight-color-dark));
+	--highlight-color-80: rgba(var(--highlight-color-dark), 0.8);
 	--shadow-color-20: rgba(var(--shadow-color-dark), 0.2);
 	--hover-color: rgb(var(--hover-color-dark));
 	--text-color: rgb(var(--text-color-dark));
 	--background-color: rgb(var(--background-color-dark));
+	--background-color-ligher: rgb(var(--background-color-dark-lighter));
+	--background-color-darker: rgb(var(--background-color-dark-darker));
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
 		--primary-color: rgb(var(--primary-color-light));
 		--primary-color-alpha: rgba(var(--primary-color-light), 0);
-		--secondary-color: rgb(var(--secondary-color-light));
+		--highlight-color: rgb(var(--highlight-color-light));
+		--highlight-color-80: rgba(var(--highlight-color-light), 0.8);
 		--shadow-color-20: rgba(var(--shadow-color-light), 0.2);
 		--hover-color: rgb(var(--hover-color-light));
 		--text-color: rgb(var(--text-color-light));
 		--background-color: rgb(var(--background-color-light));
+		--background-color-ligher: rgb(var(--background-color-light-lighter));
+		--background-color-darker: rgb(var(--background-color-light-darker));
 	}
 }
 
@@ -56,8 +67,23 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+input,
+textarea,
+button {
+	font-family: inherit
+}
+
 #app {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+}
+
+.material-symbols-outlined {
+	user-select: none;
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 24
 }
