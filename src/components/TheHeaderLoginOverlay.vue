@@ -34,7 +34,7 @@ import { ref } from 'vue'
 import BaseButton from './BaseButton.vue'
 import { supabase } from '../supabase'
 
-defineEmits<{
+const emits = defineEmits<{
 	close: []
 }>()
 
@@ -48,6 +48,8 @@ async function handleSignIn() {
 	})
 	if (error != null) {
 		console.log(error)
+	} else {
+		emits('close')
 	}
 }
 
