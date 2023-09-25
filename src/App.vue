@@ -1,17 +1,17 @@
 <template>
-  <TheHeader />
   <RouterView />
 </template>
 
 <script setup lang="ts">
-import { onMounted, provide, ref } from 'vue'
-import { RouterView } from 'vue-router'
-import { supabase } from './supabase'
 
-import TheHeader from './components/TheHeader.vue'
+import { inject, onMounted, type Ref } from 'vue';
+import { RouterView } from 'vue-router';
 
-const session = ref()
-provide('session', session)
+import type { Session } from '@supabase/supabase-js';
+import { SESSION } from './keys';
+import { supabase } from './supabase';
+
+const session = inject(SESSION) as Ref<Session | null>
 
 onMounted(() => {
   supabase.auth.getSession().then(({ data }) => {

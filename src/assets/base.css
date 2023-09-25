@@ -87,3 +87,7 @@ button {
 		'GRAD' 0,
 		'opsz' 24
 }
+
+.text-color {
+	color: var(--text-color);
+}

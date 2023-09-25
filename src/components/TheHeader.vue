@@ -1,27 +1,35 @@
 <template>
 	<header class="header">
-		<LoginOverlay v-if="showOverlay" @close="hideLoginOverlay" />
 		<LogoText class="logo" />
 		<ul class="header-elements">
 			<li>My Tournaments</li>
-			<li @click="showLoginOverlay">Login</li>
+			<li v-if="session == null" @click="handleLogIn">Login</li>
+			<li v-else @click="handleLogOut">Log Out</li>
 		</ul>
 	</header>
 </template>
 
 <script setup lang="ts">
-import LogoText from './LogoText.vue'
-import LoginOverlay from './TheHeaderLoginOverlay.vue'
-import { ref } from 'vue'
+import type { Session } from '@supabase/supabase-js';
+import type { Ref } from 'vue';
+import { inject } from 'vue';
+import { useRouter } from 'vue-router';
 
-const showOverlay = ref(false)
+import LogoText from './LogoText.vue';
 
-function showLoginOverlay() {
-	showOverlay.value = true
+import { SESSION } from '../keys';
+import { supabase } from '../supabase';
+
+const router = useRouter()
+const session = inject(SESSION) as Ref<Session | null>
+
+function handleLogIn() {
+	router.push({ name: 'login' })
 }
 
-function hideLoginOverlay() {
-	showOverlay.value = false
+async function handleLogOut() {
+	const { error } = await supabase.auth.signOut()
+	console.error(error)
 }
 
 </script>
@@ -40,6 +48,8 @@ function hideLoginOverlay() {
 
 .header-elements {
 	display: flex;
+	align-items: center;
+	text-align: center;
 	gap: 40px;
 	list-style-type: none;
 	user-select: none;
