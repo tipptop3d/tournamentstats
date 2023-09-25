@@ -70,7 +70,7 @@ body {
 input,
 textarea,
 button {
-	font-family: inherit
+	font-family: inherit;
 }
 
 #app {
@@ -85,7 +85,7 @@ button {
 		'FILL' 0,
 		'wght' 400,
 		'GRAD' 0,
-		'opsz' 24
+		'opsz' 24;
 }
 
 .text-color {

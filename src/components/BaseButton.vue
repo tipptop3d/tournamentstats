@@ -4,9 +4,7 @@
 	</button>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .button {
@@ -15,12 +13,13 @@
 	font-size: 18px;
 	font-weight: 500;
 	background-color: var(--primary-color);
-	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+	transition:
+		background-color 0.3s ease,
+		box-shadow 0.3s ease;
 	border: none;
 	border-radius: 8px;
 	padding: 12px 24px 12px 24px;
 	cursor: pointer;
-
 }
 
 .button:hover {

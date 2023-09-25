@@ -10,15 +10,15 @@
 </template>
 
 <script setup lang="ts">
-import type { Session } from '@supabase/supabase-js';
-import type { Ref } from 'vue';
-import { inject } from 'vue';
-import { useRouter } from 'vue-router';
+import type { Session } from '@supabase/supabase-js'
+import type { Ref } from 'vue'
+import { inject } from 'vue'
+import { useRouter } from 'vue-router'
 
-import LogoText from './LogoText.vue';
+import LogoText from './LogoText.vue'
 
-import { SESSION } from '../keys';
-import { supabase } from '../supabase';
+import { SESSION } from '../keys'
+import { supabase } from '../supabase'
 
 const router = useRouter()
 const session = inject(SESSION) as Ref<Session | null>
@@ -31,7 +31,6 @@ async function handleLogOut() {
 	const { error } = await supabase.auth.signOut()
 	console.error(error)
 }
-
 </script>
 
 <style scoped>
@@ -55,16 +54,18 @@ async function handleLogOut() {
 	user-select: none;
 }
 
-.header-elements>li {
+.header-elements > li {
 	font-size: 22px;
 	font-weight: 600;
 	cursor: pointer;
 	text-decoration: underline var(--primary-color-alpha);
 	text-underline-offset: 2px;
-	transition: text-decoration 0.3s ease, text-underline-offset 0.2s ease;
+	transition:
+		text-decoration 0.3s ease,
+		text-underline-offset 0.2s ease;
 }
 
-.header-elements>li:hover {
+.header-elements > li:hover {
 	text-decoration: underline var(--primary-color);
 	text-underline-offset: 4px;
 }

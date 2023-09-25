@@ -5,9 +5,7 @@
 	</div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .logo {
@@ -18,7 +16,7 @@
 	white-space: nowrap;
 }
 
-.logo>span {
+.logo > span {
 	display: inline-block;
 }
 
