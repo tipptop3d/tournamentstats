@@ -1,0 +1,42 @@
+:root {
+	--light-shades: #F3F4F1;
+	--light-accent: #9D9CB7;
+	--dark-accent: #927C96;
+	--dark-shades: #272632;
+
+	--main-color: #EE1993;
+
+	--main-shade-10: #d61784;
+	--main-shade-20: #be1476;
+	--main-shade-30: #a71267;
+	--main-shade-40: #8f0f58;
+	--main-shade-50: #770d4a;
+	--main-shade-60: #5f0a3b;
+	--main-shade-70: #47072c;
+	--main-shade-80: #30051d;
+	--main-shade-90: #18020f;
+
+	--main-tint-10: #f0309e;
+	--main-tint-20: #f147a9;
+	--main-tint-30: #f35eb3;
+	--main-tint-40: #f575be;
+	--main-tint-50: #f78cc9;
+	--main-tint-60: #f8a3d4;
+	--main-tint-70: #fabadf;
+	--main-tint-80: #fcd1e9;
+	--main-tint-90: #fde8f4;
+
+	--error-color: #ef2e4b;
+}
+
+:root {
+	--font-color: var(--light-shades);
+	--background-color: var(--dark-shades);
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--font-color: var(--dark-shades);
+		--background-color: var(--light-shades);
+	}
+}

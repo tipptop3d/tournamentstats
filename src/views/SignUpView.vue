@@ -8,9 +8,11 @@
 			</div>
 			<form @submit.prevent="handleSignUp" class="signup-form">
 				<label for="signup-email">E-Mail</label>
-				<input v-model="email" id="signup-email" type="email" placeholder="E-Mail" />
+				<input v-model="email" id="signup-email" type="email" placeholder="E-Mail" :class="{ error: hasError }" />
 				<label for="signup-password">Password</label>
-				<input v-model="password" id="signup-password" type="password" placeholder="Password" />
+				<input v-model="password" id="signup-password" type="password" placeholder="Password"
+					:class="{ error: hasError }" />
+				<span class="error-message" v-if="hasError"> {{ errors?.message }} </span>
 				<BaseButton id="signup-submit">Sign up</BaseButton>
 			</form>
 			<div class="signup-seperator">
@@ -29,9 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Session } from '@supabase/supabase-js'
+import type { AuthError, Session } from '@supabase/supabase-js'
 import type { Ref } from 'vue'
-import { inject, ref } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import BaseButton from '../components/BaseButton.vue'
@@ -47,16 +49,20 @@ const session = inject(SESSION) as Ref<Session | null>
 const email = ref('')
 const password = ref('')
 
+const errors = ref<AuthError | null>(null)
+const hasError = computed(() => errors.value != null)
+
 async function handleSignUp() {
 	const { data, error } = await supabase.auth.signUp({
 		email: email.value,
 		password: password.value
 	})
 	if (error == null) {
+		errors.value = null
 		const path = route.query.redirect as string | null | undefined
 		router.replace({ path: path ? path : '/' })
 	} else {
-		console.error(error)
+		errors.value = error
 	}
 }
 
@@ -105,6 +111,15 @@ async function signInWithDiscord() {
 .signup-form input:is([type='email'], [type='password']):focus {
 	outline: 2px solid var(--primary-color);
 }
+
+input:is([type='email'], [type='password']).error {
+	border: 2px solid red;
+}
+
+.error-message {
+	color: red;
+}
+
 
 #signup-submit {
 	margin-top: 12px;

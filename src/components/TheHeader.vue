@@ -54,19 +54,19 @@ async function handleLogOut() {
 	user-select: none;
 }
 
-.header-elements > li {
+.header-elements>li {
 	font-size: 22px;
 	font-weight: 600;
 	cursor: pointer;
-	text-decoration: underline var(--primary-color-alpha);
+	text-decoration: underline color-mix(in srgb, var(--main-color) 0%, transparent);
 	text-underline-offset: 2px;
 	transition:
 		text-decoration 0.3s ease,
 		text-underline-offset 0.2s ease;
 }
 
-.header-elements > li:hover {
-	text-decoration: underline var(--primary-color);
+.header-elements>li:hover {
+	text-decoration: underline var(--main-color);
 	text-underline-offset: 4px;
 }
 </style>

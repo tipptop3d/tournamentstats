@@ -8,9 +8,11 @@
 			</div>
 			<form @submit.prevent="handleSignIn" class="login-form">
 				<label for="login-email">E-Mail</label>
-				<input v-model="email" id="login-email" type="email" placeholder="E-Mail" />
+				<input v-model="email" id="login-email" type="email" placeholder="E-Mail" :class="{ error: hasError }" />
 				<label for="login-password">Password</label>
-				<input v-model="password" id="login-password" type="password" placeholder="Password" />
+				<input v-model="password" id="login-password" type="password" placeholder="Password"
+					:class="{ error: hasError }" />
+				<span class="error-message" v-if="hasError"> {{ errors?.message }}</span>
 				<BaseButton id="login-submit">Log In</BaseButton>
 			</form>
 			<div class="login-seperator">
@@ -29,9 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import type { Session } from '@supabase/supabase-js'
+import type { AuthError, Session } from '@supabase/supabase-js'
 import type { Ref } from 'vue'
-import { inject, ref } from 'vue'
+import { inject, ref, computed } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 
 import BaseButton from '../components/BaseButton.vue'
@@ -47,15 +49,20 @@ const session = inject(SESSION) as Ref<Session | null>
 const email = ref('')
 const password = ref('')
 
+const errors = ref<AuthError | null>(null)
+const hasError = computed(() => errors.value != null)
+
 async function handleSignIn() {
 	const { data, error } = await supabase.auth.signInWithPassword({
 		email: email.value,
 		password: password.value
 	})
 	if (error == null) {
-		console.log(typeof route.query.redirect)
+		errors.value = null
 		const path = route.query.redirect as string | null | undefined
 		router.replace({ path: path ? path : '/' })
+	} else {
+		errors.value = error
 	}
 }
 
@@ -104,6 +111,15 @@ async function signInWithDiscord() {
 .login-form input:is([type='email'], [type='password']):focus {
 	outline: 2px solid var(--primary-color);
 }
+
+input:is([type='email'], [type='password']).error {
+	border: 2px solid red;
+}
+
+.error-message {
+	color: red;
+}
+
 
 #login-submit {
 	margin-top: 12px;

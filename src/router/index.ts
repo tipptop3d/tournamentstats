@@ -4,9 +4,21 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { SESSION } from '../keys'
 import HomeView from '../views/HomeView.vue'
 
+declare module 'vue-router' {
+	interface RouteMeta {
+		title?: string
+		requiresAuth?: boolean
+		isOwner?: boolean
+	}
+}
+
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
+		{
+			path: '/debug',
+			component: () => import('../debug/DebugView.vue')
+		},
 		{
 			path: '/',
 			name: 'home',
@@ -26,7 +38,7 @@ const router = createRouter({
 		},
 		{
 			path: '/tournament',
-			component: () => import('../views/TournamentView.vue'),
+			// component: () => import('../views/TournamentView.vue'),
 			children: [
 				{
 					path: 'create',
@@ -53,7 +65,7 @@ const router = createRouter({
 	]
 })
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, _from) => {
 	const session = inject(SESSION) as Ref<Session | null>
 	const isAuth = session.value != null
 	console.log('SESSION', session)
@@ -74,8 +86,8 @@ router.beforeEach((to, from) => {
 })
 
 const DEFAULT_TITLE = 'TournamentStats'
-router.afterEach((to, from) => {
-	document.title = (to.meta.title as string) || DEFAULT_TITLE
+router.afterEach((to, _from) => {
+	document.title = (to.meta.title) || DEFAULT_TITLE
 })
 
 export default router

@@ -16,7 +16,7 @@
 	white-space: nowrap;
 }
 
-.logo > span {
+.logo>span {
 	display: inline-block;
 }
 
@@ -26,6 +26,6 @@
 
 .stats {
 	font-size: 82px;
-	color: var(--primary-color);
+	color: var(--main-color);
 }
 </style>
