@@ -16,7 +16,7 @@
 	white-space: nowrap;
 }
 
-.logo>span {
+.logo > span {
 	display: inline-block;
 }
 

@@ -7,12 +7,19 @@
 				<router-link to="signup" class="text-color">Sign up</router-link>
 			</div>
 			<form @submit.prevent="handleSignIn" class="login-form">
-				<label for="login-email">E-Mail</label>
-				<input v-model="email" id="login-email" type="email" placeholder="E-Mail" :class="{ error: hasError }" />
-				<label for="login-password">Password</label>
-				<input v-model="password" id="login-password" type="password" placeholder="Password"
-					:class="{ error: hasError }" />
-				<span class="error-message" v-if="hasError"> {{ errors?.message }}</span>
+				<BaseTextField
+					v-model="email"
+					type="email"
+					placeholder="Your Email"
+					:error="hasError"
+					:supporting-text="errors?.message"
+				/>
+				<BaseTextField
+					v-model="password"
+					type="password"
+					placeholder="Password"
+					:error="hasError"
+				/>
 				<BaseButton id="login-submit">Log In</BaseButton>
 			</form>
 			<div class="login-seperator">
@@ -21,10 +28,7 @@
 				<div></div>
 			</div>
 			<div class="social-logins">
-				<BaseButton @click="signInWithDiscord">
-					<img src="../assets/discord_logo_white.svg" />
-					<span>Log In with Discord</span>
-				</BaseButton>
+				<DiscordLoginButton :redirect="redirectTo"></DiscordLoginButton>
 			</div>
 		</div>
 	</div>
@@ -37,13 +41,18 @@ import { inject, ref, computed } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 
 import BaseButton from '../components/BaseButton.vue'
+import DiscordLoginButton from '@/components/DiscordLoginButton.vue'
 import LogoText from '../components/LogoText.vue'
+import BaseTextField from '../components/BaseTextField.vue'
 
 import { SESSION } from '../keys'
 import { supabase } from '../supabase'
 
 const router = useRouter()
 const route = useRoute()
+
+const path = route.query.redirect as string | null
+const redirectTo = path ? path : '/'
 
 const session = inject(SESSION) as Ref<Session | null>
 const email = ref('')
@@ -59,18 +68,11 @@ async function handleSignIn() {
 	})
 	if (error == null) {
 		errors.value = null
-		const path = route.query.redirect as string | null | undefined
-		router.replace({ path: path ? path : '/' })
+		const path = route.query.redirect as string | null
+		router.replace({ path: redirectTo })
 	} else {
 		errors.value = error
 	}
-}
-
-async function signInWithDiscord() {
-	const { data, error } = await supabase.auth.signInWithOAuth({
-		provider: 'discord'
-	})
-	console.log(data, error)
 }
 </script>
 
@@ -86,43 +88,26 @@ async function signInWithDiscord() {
 }
 
 .login-box {
-	background-color: rgba(0, 0, 0, 0.2);
-	padding: 24px 36px 24px 36px;
+	background-color: var(--background-shade-20);
+	width: 350px;
+	padding: 28px 32px;
 	margin-top: 12px;
 	border-radius: 6px;
-}
-
-.login-form {
 	display: flex;
 	flex-direction: column;
 }
 
-.login-form input:is([type='email'], [type='password']) {
-	color: inherit;
-	font-size: 16px;
-	background-color: var(--background-color-darker);
-	border: 2px solid rgb(25, 23, 25);
-	border-radius: 4px;
-	padding: 8px;
-	margin-bottom: 6px;
-	transition: border 0.2s ease;
+.login-form {
+	background-color: inherit;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
-
-.login-form input:is([type='email'], [type='password']):focus {
-	outline: 2px solid var(--primary-color);
-}
-
-input:is([type='email'], [type='password']).error {
-	border: 2px solid red;
-}
-
-.error-message {
-	color: red;
-}
-
 
 #login-submit {
 	margin-top: 12px;
+	width: 250px;
 }
 
 .login-seperator {
@@ -131,13 +116,14 @@ input:is([type='email'], [type='password']).error {
 	justify-content: space-around;
 	margin-top: 6px;
 	margin-bottom: 6px;
+	opacity: 0.5;
 }
 
 .login-seperator div {
 	/* display: inline-block; */
 	/* width: auto; */
 	flex-grow: 0.5;
-	border-top: 1px solid var(--text-color);
+	border-top: 1px solid var(--font-color);
 	margin-left: 4px;
 	margin-right: 4px;
 }
@@ -147,35 +133,7 @@ input:is([type='email'], [type='password']).error {
 	padding-right: 4px;
 }
 
-.social-logins button {
-	/* display: flex; */
-	background-color: #5865f2;
-	border: none;
-	display: flex;
-	align-items: center;
-	border-radius: 6px;
-	margin: 0;
-	height: 45px;
-	padding-top: auto;
-	padding-bottom: auto;
-	padding-left: 4px;
-	padding-right: 4px;
-}
-
-.social-logins button:hover {
-	/* display: flex; */
-	background-color: #2f378a;
-	border: none;
-}
-
-.social-logins button img {
-	width: 36px;
-	margin: 6px 12px 6px 12px;
-}
-
-.social-logins button span {
-	font-size: 16px;
-	margin-right: 12px;
-	font-weight: 500;
+.social-logins {
+	align-self: center;
 }
 </style>

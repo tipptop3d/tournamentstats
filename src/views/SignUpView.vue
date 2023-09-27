@@ -8,10 +8,21 @@
 			</div>
 			<form @submit.prevent="handleSignUp" class="signup-form">
 				<label for="signup-email">E-Mail</label>
-				<input v-model="email" id="signup-email" type="email" placeholder="E-Mail" :class="{ error: hasError }" />
+				<input
+					v-model="email"
+					id="signup-email"
+					type="email"
+					placeholder="E-Mail"
+					:class="{ error: hasError }"
+				/>
 				<label for="signup-password">Password</label>
-				<input v-model="password" id="signup-password" type="password" placeholder="Password"
-					:class="{ error: hasError }" />
+				<input
+					v-model="password"
+					id="signup-password"
+					type="password"
+					placeholder="Password"
+					:class="{ error: hasError }"
+				/>
 				<span class="error-message" v-if="hasError"> {{ errors?.message }} </span>
 				<BaseButton id="signup-submit">Sign up</BaseButton>
 			</form>
@@ -119,7 +130,6 @@ input:is([type='email'], [type='password']).error {
 .error-message {
 	color: red;
 }
-
 
 #signup-submit {
 	margin-top: 12px;

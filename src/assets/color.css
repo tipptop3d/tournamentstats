@@ -1,10 +1,9 @@
 :root {
-	--light-shades: #F3F4F1;
-	--light-accent: #9D9CB7;
-	--dark-accent: #927C96;
-	--dark-shades: #272632;
+	--light-shades: #f3f4f1;
+	--light-accent: #9d9cb7;
+	--dark-accent: #927c96;
 
-	--main-color: #EE1993;
+	--main-color: #ee1993;
 
 	--main-shade-10: #d61784;
 	--main-shade-20: #be1476;
@@ -27,16 +26,36 @@
 	--main-tint-90: #fde8f4;
 
 	--error-color: #ef2e4b;
+
+	--dark-shade: #272632;
+	--dark-shade-shade-10: #23222d;
+	--dark-shade-shade-20: #1f1e28;
+	--dark-shade-shade-30: #1b1b23;
+	--dark-shade-shade-40: #17171e;
+	--dark-shade-shade-50: #141319;
+	--dark-shade-shade-60: #100f14;
+	--dark-shade-shade-70: #0c0b0f;
+	--dark-shade-shade-80: #08080a;
+	--dark-shade-shade-90: #040405;
 }
 
 :root {
 	--font-color: var(--light-shades);
-	--background-color: var(--dark-shades);
+	--background-color: var(--dark-shade);
+	--background-shade-10: var(--dark-shade-shade-10);
+	--background-shade-20: var(--dark-shade-shade-20);
+	--background-shade-30: var(--dark-shade-shade-30);
+	--background-shade-40: var(--dark-shade-shade-40);
+	--background-shade-50: var(--dark-shade-shade-50);
+	--background-shade-60: var(--dark-shade-shade-60);
+	--background-shade-70: var(--dark-shade-shade-70);
+	--background-shade-80: var(--dark-shade-shade-80);
+	--background-shade-90: var(--dark-shade-shade-90);
 }
 
 @media (prefers-color-scheme: light) {
 	:root {
 		--font-color: var(--dark-shades);
-		--background-color: var(--light-shades);
+		--background-color: var(--light-shade);
 	}
 }

@@ -1,7 +1,11 @@
 <template>
 	<button class="button" :class="{ 'icon-button': props.icon != null }">
 		<span class="wrapper">
-			<span v-if="props.icon != null" class="material-symbols-outlined" :class="{ right: props.position == 'right' }">
+			<span
+				v-if="props.icon != null"
+				class="material-symbols-outlined"
+				:class="{ right: props.position == 'right' }"
+			>
 				{{ props.icon }}
 			</span>
 			<slot></slot>
@@ -10,17 +14,20 @@
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-	icon?: string
-	position?: 'left' | 'right'
-}>(), {
-	position: 'left'
-})
+const props = withDefaults(
+	defineProps<{
+		icon?: string
+		position?: 'left' | 'right'
+	}>(),
+	{
+		position: 'left'
+	}
+)
 </script>
 
 <style scope>
 .button {
-	min-height: 45px;
+	height: 45px;
 	min-width: 70px;
 	padding: 12px 22px;
 	color: inherit;
@@ -38,7 +45,7 @@ const props = withDefaults(defineProps<{
 }
 
 .icon-button {
-	padding: 12px 18px;
+	padding: 10.5px 18px;
 }
 
 .button:hover:enabled,

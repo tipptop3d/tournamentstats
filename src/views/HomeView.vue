@@ -1,7 +1,9 @@
 <template>
 	<TheHeader />
 	<div class="view-wrapper">
-		<BaseButton class="create-button" @click="handleNewTournament">Create New Tournament</BaseButton>
+		<BaseButton class="create-button" @click="handleNewTournament"
+			>Create New Tournament</BaseButton
+		>
 	</div>
 </template>
 

@@ -87,7 +87,7 @@ router.beforeEach((to, _from) => {
 
 const DEFAULT_TITLE = 'TournamentStats'
 router.afterEach((to, _from) => {
-	document.title = (to.meta.title) || DEFAULT_TITLE
+	document.title = to.meta.title || DEFAULT_TITLE
 })
 
 export default router

@@ -11,7 +11,6 @@ const session = ref<Session | null>(null)
 
 const app = createApp(App)
 app.provide(SESSION, session)
-
 app.use(router)
 
 app.mount('#app')

@@ -54,7 +54,7 @@ async function handleLogOut() {
 	user-select: none;
 }
 
-.header-elements>li {
+.header-elements > li {
 	font-size: 22px;
 	font-weight: 600;
 	cursor: pointer;
@@ -65,7 +65,7 @@ async function handleLogOut() {
 		text-underline-offset 0.2s ease;
 }
 
-.header-elements>li:hover {
+.header-elements > li:hover {
 	text-decoration: underline var(--main-color);
 	text-underline-offset: 4px;
 }

@@ -3,11 +3,11 @@
 	<form>
 		<h2>New Tournament</h2>
 		<label>Tournament Name</label>
-		<input>
+		<input />
 		<label>Tournament Logo</label>
-		<input>
+		<input />
 		<label>Private</label>
-		<input>
+		<input />
 		<button>Create</button>
 	</form>
 </template>
