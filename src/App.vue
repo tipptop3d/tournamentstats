@@ -1,5 +1,5 @@
 <template>
-	<RouterView />
+	<h1> Work in progess </h1>
 </template>
 
 <script setup lang="ts">
