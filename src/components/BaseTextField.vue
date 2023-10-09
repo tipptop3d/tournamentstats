@@ -1,18 +1,18 @@
 <template>
-	<div class="field-group" :class="{ error: props.error, disabled: $attrs['disabled'] }">
+	<div class="field-group" :class="{ error: error, disabled: $attrs['disabled'] }">
 		<div class="text-box">
 			<input
-				id="input"
-				:type="type"
 				class="text-field"
+				:id="id"
+				:type="type"
 				:value="modelValue"
 				v-bind="$attrs"
 				@input="(event) => $emit('update:modelValue', (event.target as HTMLInputElement).value)"
 			/>
-			<label for="input" class="field-label"> {{ $attrs['placeholder'] }}</label>
+			<label :for="id" class="field-label"> {{ $attrs['placeholder'] }}</label>
 			<span v-if="error" class="error-icon material-symbols-outlined error">error</span>
 		</div>
-		<div class="supporting-text">{{ props.supportingText }}</div>
+		<div class="supporting-text">{{ supportingText }}</div>
 	</div>
 </template>
 
@@ -23,6 +23,7 @@ defineOptions({
 
 const props = withDefaults(
 	defineProps<{
+		id: string
 		type?: 'text' | 'email' | 'password' | 'tel' | 'url'
 		supportingText?: string | null
 		error?: boolean
@@ -44,37 +45,38 @@ const emits = defineEmits<{
 .field-group {
 	width: 250px;
 	margin-top: 8px;
-	background: inherit;
 }
 
 .field-group.disabled {
+	cursor: not-allowed;
 	opacity: 0.5;
 }
 
 .text-box {
 	position: relative;
-	background: inherit;
 }
 
 .text-field {
 	width: 100%;
 	height: 56px;
 	font-size: 16px;
-	color: var(--font-color);
+	padding: 24px 12px 8px;
 	font-family: inherit;
-	padding: 12px 16px;
-	background: transparent;
-	outline: 1px solid var(--font-color);
+	color: var(--font-color);
 	border: none;
+	background: var(--background-shade-40);
 	border-radius: 4px;
-	transition: outline 0.2s ease;
+	/* outline:  */
 }
 
-.text-field:focus {
-	outline: 2px solid var(--main-color);
-	/* height: 55px;
-	padding-left: 15.5px;
-	padding-right: 15.5px; */
+.text-field::after {
+	opacity: 0;
+	outline: 2px solid var(--font-color);
+	transition: outline-color 0.1s;
+}
+.text-field::after:focus {
+	opacity: 1;
+	outline: 2px solid var(--font-color);
 }
 
 .text-field::placeholder {
@@ -82,27 +84,31 @@ const emits = defineEmits<{
 }
 
 .text-field ~ .field-label {
-	background-color: inherit;
+	background-color: transparent;
 	cursor: text;
 	position: absolute;
 	display: block;
-	transition: 0.2s;
-	padding: 0 4px;
+	transition-duration: 0.2s;
+	transition-property: top, font-size, transform, margin-left;
 	margin-left: 12px;
-	font-size: 12px;
-	top: -10px;
-	color: var(--font-color);
+	font-size: 14px;
+	top: 4px;
+	transform: translateY(0);
+	color: var(--light-accent);
 }
 
 .text-field:placeholder-shown ~ .field-label {
-	top: 16px;
+	top: 50%;
+	transform: translateY(-50%);
+	margin-left: 16px;
 	font-size: 16px;
 }
 
 .text-field:focus ~ .field-label {
-	font-size: 12px;
-	top: -10px;
-	color: var(--main-color);
+	font-size: 14px;
+	top: 4px;
+	margin-left: 12px;
+	transform: translateY(0);
 }
 
 .supporting-text {
@@ -128,6 +134,7 @@ const emits = defineEmits<{
 	right: 12px;
 	top: 50%;
 	transform: translateY(-50%);
+	pointer-events: none;
 }
 
 .field-group.error {
@@ -135,13 +142,11 @@ const emits = defineEmits<{
 }
 
 .field-group.error .text-field {
-	color: var(--error-color);
-	outline: 1px solid var(--error-color);
+	outline: 2px solid var(--error-color);
 	padding-right: 52px;
 }
 
 .field-group.error .text-field:focus {
-	color: var(--error-color);
 	outline: 2px solid var(--error-color);
 }
 
