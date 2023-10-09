@@ -8,6 +8,7 @@
 			</div>
 			<form @submit.prevent="handleSignIn" class="login-form">
 				<BaseTextField
+					id="email"
 					v-model="email"
 					type="email"
 					placeholder="Your Email"
@@ -15,6 +16,7 @@
 					:supporting-text="errors?.message"
 				/>
 				<BaseTextField
+					id="password"
 					v-model="password"
 					type="password"
 					placeholder="Password"

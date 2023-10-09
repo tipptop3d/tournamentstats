@@ -3,28 +3,26 @@
 		<LogoText class="logo" />
 		<div class="signup-box">
 			<div class="signup-header">
-				<h2>Sign up</h2>
-				<router-link to="login" class="text-color">Log in</router-link>
+				<h2>Log In</h2>
+				<router-link to="signup" class="text-color">Sign up</router-link>
 			</div>
 			<form @submit.prevent="handleSignUp" class="signup-form">
-				<label for="signup-email">E-Mail</label>
-				<input
+				<BaseTextField
+					id="email"
 					v-model="email"
-					id="signup-email"
 					type="email"
-					placeholder="E-Mail"
-					:class="{ error: hasError }"
+					placeholder="Your Email"
+					:error="hasError"
+					:supporting-text="errors?.message"
 				/>
-				<label for="signup-password">Password</label>
-				<input
+				<BaseTextField
+					id="password"
 					v-model="password"
-					id="signup-password"
 					type="password"
 					placeholder="Password"
-					:class="{ error: hasError }"
+					:error="hasError"
 				/>
-				<span class="error-message" v-if="hasError"> {{ errors?.message }} </span>
-				<BaseButton id="signup-submit">Sign up</BaseButton>
+				<BaseButton id="signup-submit">Log In</BaseButton>
 			</form>
 			<div class="signup-seperator">
 				<div></div>
@@ -32,10 +30,7 @@
 				<div></div>
 			</div>
 			<div class="social-signups">
-				<BaseButton @click="signInWithDiscord">
-					<img src="../assets/discord_logo_white.svg" />
-					<span>Log In with Discord</span>
-				</BaseButton>
+				<DiscordLoginButton :redirect="redirectTo"></DiscordLoginButton>
 			</div>
 		</div>
 	</div>
@@ -49,12 +44,16 @@ import { useRoute, useRouter } from 'vue-router'
 
 import BaseButton from '../components/BaseButton.vue'
 import LogoText from '../components/LogoText.vue'
+import DiscordLoginButton from '@/components/DiscordLoginButton.vue'
 
 import { SESSION } from '../keys'
 import { supabase } from '../supabase'
 
 const router = useRouter()
 const route = useRoute()
+
+const path = route.query.redirect as string | null
+const redirectTo = path ? path : '/'
 
 const session = inject(SESSION) as Ref<Session | null>
 const email = ref('')
@@ -75,13 +74,6 @@ async function handleSignUp() {
 	} else {
 		errors.value = error
 	}
-}
-
-async function signInWithDiscord() {
-	const { data, error } = await supabase.auth.signInWithOAuth({
-		provider: 'discord'
-	})
-	console.log(data, error)
 }
 </script>
 
