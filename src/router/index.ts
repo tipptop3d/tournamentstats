@@ -39,6 +39,7 @@ const router = createRouter({
 		{
 			path: '/tournament',
 			// component: () => import('../views/TournamentView.vue'),
+			redirect: { name: 'create' },
 			children: [
 				{
 					path: 'create',

@@ -24,9 +24,9 @@
 				placeholder="disabled"
 			/>
 		</div>
-		<BaseInputCheckbox></BaseInputCheckbox>
-		<BaseInputCheckbox></BaseInputCheckbox>
-		<BaseInputCheckbox></BaseInputCheckbox>
+		<BaseInputCheckbox id="c1">Test</BaseInputCheckbox>
+		<BaseInputCheckbox id="c2">Test2</BaseInputCheckbox>
+		<BaseInputCheckbox id="c3">Test§</BaseInputCheckbox>
 		<BaseInputFile id="file1" v-model="file" accept="image/*" :max-file-size-mb="1" />
 		<BaseInputFileImagePreview
 			id="file2"
@@ -46,10 +46,10 @@ import BaseButtonIcon from '../components/BaseButtonIcon.vue'
 import BaseInputCheckbox from '../components/BaseInputCheckbox.vue'
 import BaseInputTextField from '../components/BaseInputTextField.vue'
 import BaseInputFile from '../components/BaseInputFile.vue'
+import BaseInputFileButton from '../components/BaseInputFileButton.vue'
 import BaseInputFileImagePreview from '../components/BaseInputFileImagePreview.vue'
 import { ref, computed } from 'vue'
 import quickSlider from '../components/quickSlider.vue'
-import BaseInputFileButton from '../components/BaseInputFileButton.vue'
 
 const text = ref('55')
 const tex = ref(true)

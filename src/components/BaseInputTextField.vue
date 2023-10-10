@@ -5,11 +5,14 @@
 				class="text-field"
 				:id="id"
 				:type="type"
+				:required="required"
 				:value="modelValue"
 				v-bind="$attrs"
 				@input="(event) => $emit('update:modelValue', (event.target as HTMLInputElement).value)"
 			/>
-			<label :for="id" class="field-label"> {{ $attrs['placeholder'] }}</label>
+			<label :for="id" class="field-label">
+				{{ $attrs['placeholder'] }}
+			</label>
 			<span v-if="error" class="error-icon material-symbols-outlined error">error</span>
 		</div>
 		<div class="supporting-text">{{ supportingText }}</div>
@@ -25,12 +28,14 @@ const props = withDefaults(
 	defineProps<{
 		id: string
 		type?: 'text' | 'email' | 'password' | 'tel' | 'url'
+		required?: boolean
 		supportingText?: string | null
 		error?: boolean
 		modelValue: string
 	}>(),
 	{
 		type: 'text',
+		required: false,
 		supportingText: '',
 		error: false
 	}

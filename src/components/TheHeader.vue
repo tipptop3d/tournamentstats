@@ -1,11 +1,13 @@
 <template>
 	<header class="header">
 		<LogoText class="logo" />
-		<ul class="header-elements">
-			<li>My Tournaments</li>
-			<li v-if="session == null" @click="handleLogIn">Login</li>
-			<li v-else @click="handleLogOut">Log Out</li>
-		</ul>
+		<nav>
+			<ul class="header-elements">
+				<li>My Tournaments</li>
+				<li v-if="session == null" @click="handleLogIn">Login</li>
+				<li v-else @click="handleLogOut">Log Out</li>
+			</ul>
+		</nav>
 	</header>
 </template>
 
