@@ -4,10 +4,10 @@
 			<BaseButton @click="console.log('test')">Test</BaseButton>
 			<BaseButton @click="console.log('add')" icon="Favorite" position="left">add</BaseButton>
 			<BaseButton disabled>Disabled</BaseButton>
-			<BaseIconButton @click="console.log('favorite')">favorite</BaseIconButton>
+			<BaseButtonIcon @click="console.log('favorite')">favorite</BaseButtonIcon>
 		</div>
 		<div class="grid-element">
-			<BaseTextField
+			<BaseInputTextField
 				id="1"
 				type="text"
 				v-model="text"
@@ -15,8 +15,8 @@
 				:supporting-text="supportingText"
 				placeholder="Your Email"
 			/>
-			<BaseTextField id="2" type="text" v-model="text" placeholder="Your Email" />
-			<BaseTextField
+			<BaseInputTextField id="2" type="text" v-model="text" placeholder="Your Email" />
+			<BaseInputTextField
 				id="3"
 				:disabled="tex ? true : null"
 				type="text"
@@ -24,11 +24,11 @@
 				placeholder="disabled"
 			/>
 		</div>
-		<BaseCheckbox></BaseCheckbox>
-		<BaseCheckbox></BaseCheckbox>
-		<BaseCheckbox></BaseCheckbox>
-		<BaseUpload id="file1" v-model="file" accept="image/*" :max-file-size-mb="1" />
-		<BaseUploadImagePreview
+		<BaseInputCheckbox></BaseInputCheckbox>
+		<BaseInputCheckbox></BaseInputCheckbox>
+		<BaseInputCheckbox></BaseInputCheckbox>
+		<BaseInputFile id="file1" v-model="file" accept="image/*" :max-file-size-mb="1" />
+		<BaseInputFileImagePreview
 			id="file2"
 			v-model="file"
 			:height="size + 'px'"
@@ -42,13 +42,14 @@
 
 <script setup lang="ts">
 import BaseButton from '../components/BaseButton.vue'
-import BaseIconButton from '../components/BaseIconButton.vue'
-import BaseCheckbox from '../components/BaseCheckbox.vue'
-import BaseTextField from '../components/BaseTextField.vue'
-import BaseUpload from '../components/BaseUpload.vue'
-import BaseUploadImagePreview from '../components/BaseUploadImagePreview.vue'
+import BaseButtonIcon from '../components/BaseButtonIcon.vue'
+import BaseInputCheckbox from '../components/BaseInputCheckbox.vue'
+import BaseInputTextField from '../components/BaseInputTextField.vue'
+import BaseInputFile from '../components/BaseInputFile.vue'
+import BaseInputFileImagePreview from '../components/BaseInputFileImagePreview.vue'
 import { ref, computed } from 'vue'
-import quickSlider from '@/components/quickSlider.vue'
+import quickSlider from '../components/quickSlider.vue'
+import BaseInputFileButton from '../components/BaseInputFileButton.vue'
 
 const text = ref('55')
 const tex = ref(true)

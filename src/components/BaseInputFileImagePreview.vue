@@ -1,6 +1,11 @@
 <template>
 	<div class="wrapper">
-		<BaseUpload v-model="file" :id="id" :accept="accept.join(', ')" :maxFileSizeMb="maxFileSizeMb">
+		<BaseInputFile
+			v-model="file"
+			:id="id"
+			:accept="accept.join(', ')"
+			:maxFileSizeMb="maxFileSizeMb"
+		>
 			<div
 				class="upload-box"
 				@mouseover="hoverUpload = true"
@@ -25,7 +30,7 @@
 					</p>
 				</div>
 			</div>
-		</BaseUpload>
+		</BaseInputFile>
 		<Transition name="slide-fade">
 			<BaseButton class="remove-btn" v-if="file" @click="removeImage">Remove</BaseButton>
 		</Transition>
@@ -33,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseUpload from './BaseUpload.vue'
+import BaseInputFile from './BaseInputFile.vue'
 import BaseButton from './BaseButton.vue'
 import { ref, watch, computed, onUnmounted } from 'vue'
 

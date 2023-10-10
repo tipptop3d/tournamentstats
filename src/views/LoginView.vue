@@ -45,7 +45,7 @@ import { RouterLink, useRoute, useRouter } from 'vue-router'
 import BaseButton from '../components/BaseButton.vue'
 import DiscordLoginButton from '@/components/DiscordLoginButton.vue'
 import LogoText from '../components/LogoText.vue'
-import BaseTextField from '../components/BaseTextField.vue'
+import BaseTextField from '../components/BaseInputTextField.vue'
 
 import { SESSION } from '../keys'
 import { supabase } from '../supabase'

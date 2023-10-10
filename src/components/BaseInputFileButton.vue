@@ -1,6 +1,6 @@
 <template>
 	<div class="wrapper">
-		<BaseUpload
+		<BaseInputFile
 			class="label"
 			:id="id"
 			:maxFileSizeMb="maxFileSizeMb"
@@ -8,14 +8,14 @@
 			:accept="accept"
 		>
 			<BaseButton @click.prevent="input?.click()" icon="publish"> Upload </BaseButton>
-		</BaseUpload>
+		</BaseInputFile>
 		<p class="file-name">{{ file?.name }}</p>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import BaseUpload from './BaseUpload.vue'
+import BaseInputFile from './BaseInputFile.vue'
 import BaseButton from './BaseButton.vue'
 
 const props = withDefaults(
