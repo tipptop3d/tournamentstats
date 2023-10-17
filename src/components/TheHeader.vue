@@ -44,7 +44,7 @@ async function handleLogOut() {
 	justify-content: space-between;
 	padding-left: 25px;
 	padding-right: 40px;
-	background: rgba(18, 16, 18, 0.3);
+	background: var(--background-shade-20);
 }
 
 .header-elements {
@@ -54,6 +54,7 @@ async function handleLogOut() {
 	gap: 40px;
 	list-style-type: none;
 	user-select: none;
+	padding-inline-start: 0;
 }
 
 .header-elements > li {
