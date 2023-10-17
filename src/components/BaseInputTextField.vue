@@ -85,6 +85,8 @@ const emits = defineEmits<{
 }
 
 .text-field::placeholder {
+	pointer-events: none;
+	user-select: none;
 	color: transparent;
 }
 
