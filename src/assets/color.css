@@ -26,18 +26,18 @@
 	--main-tint-80: #fcd1e9;
 	--main-tint-90: #fde8f4;
 
-	--error-color: #ef2e4b;
+	--dark-shade: #181A1B;
+	--dark-shade-shade-10: color-mix(in srgb, var(--dark-shade), black 10%);
+	--dark-shade-shade-20: color-mix(in srgb, var(--dark-shade), black 20%);
+	--dark-shade-shade-30: color-mix(in srgb, var(--dark-shade), black 30%);
+	--dark-shade-shade-40: color-mix(in srgb, var(--dark-shade), black 40%);
+	--dark-shade-shade-50: color-mix(in srgb, var(--dark-shade), black 50%);
+	--dark-shade-shade-60: color-mix(in srgb, var(--dark-shade), black 60%);
+	--dark-shade-shade-70: color-mix(in srgb, var(--dark-shade), black 70%);
+	--dark-shade-shade-80: color-mix(in srgb, var(--dark-shade), black 80%);
+	--dark-shade-shade-90: color-mix(in srgb, var(--dark-shade), black 90%);
 
-	--dark-shade: #272632;
-	--dark-shade-shade-10: #23222d;
-	--dark-shade-shade-20: #1f1e28;
-	--dark-shade-shade-30: #1b1b23;
-	--dark-shade-shade-40: #17171e;
-	--dark-shade-shade-50: #141319;
-	--dark-shade-shade-60: #100f14;
-	--dark-shade-shade-70: #0c0b0f;
-	--dark-shade-shade-80: #08080a;
-	--dark-shade-shade-90: #040405;
+	--error-color: #ef2e4b;
 }
 
 :root {
