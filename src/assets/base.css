@@ -93,3 +93,7 @@ button {
 .text-color {
 	color: var(--font-color);
 }
+
+::selection {
+	background: color-mix(in srgb, var(--main-color) 70%, transparent);
+}
