@@ -1,27 +1,24 @@
 <template>
-	<div class="wrapper">
-		<BaseInputFile
-			class="label"
-			:id="id"
-			:maxFileSizeMb="maxFileSizeMb"
-			v-model="file"
-			:accept="accept"
-		>
-			<BaseButton @click.prevent="input?.click()" icon="publish"> Upload </BaseButton>
+	<div class="upload-wrapper">
+		<BaseInputFile :id="id" :maxFileSizeMb="maxFileSizeMb" v-model="file" :accept="accept">
+			<div class="wrappe2">
+				<BaseButtonIcon class="upload-button" icon="upload_file">
+					<slot>Upload File</slot>
+				</BaseButtonIcon>
+				<span v-if="file?.name" class="file-name">{{ file?.name }}</span>
+			</div>
 		</BaseInputFile>
-		<p class="file-name">{{ file?.name }}</p>
 	</div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import BaseInputFile from './BaseInputFile.vue'
-import BaseButton from './BaseButton.vue'
+import BaseButtonIcon from './BaseButtonIcon.vue'
 
 const props = withDefaults(
 	defineProps<{
 		id: string
-		label: string
 		accept: string
 		maxFileSizeMb: number
 		modelValue: File | null
@@ -46,16 +43,27 @@ const file = computed({
 </script>
 
 <style scoped>
-.wrapper {
+.upload-wrapper {
+	display: inline;
+}
+
+.wrappe2 {
 	display: inline-flex;
 	position: relative;
 	justify-content: center;
 	flex-direction: column;
 	gap: 0px;
+	max-width: min-content;
 }
-
+.upload-button {
+	width: max-content;
+}
 .file-name {
+	contain: size;
 	font-size: 14px;
 	min-height: 22.4px;
+	text-wrap: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 </style>

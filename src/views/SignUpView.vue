@@ -30,7 +30,7 @@
 				<div></div>
 			</div>
 			<div class="social-logins">
-				<DiscordLoginButton :redirect="redirectTo"></DiscordLoginButton>
+				<ButtonLoginDiscord :redirect="redirectTo"></ButtonLoginDiscord>
 			</div>
 		</div>
 	</div>
@@ -45,7 +45,7 @@ import { useRoute, useRouter } from 'vue-router'
 import BaseButton from '../components/BaseButton.vue'
 import LogoText from '../components/LogoText.vue'
 import BaseInputTextField from '../components/BaseInputTextField.vue'
-import DiscordLoginButton from '../components/DiscordLoginButton.vue'
+import ButtonLoginDiscord from '../components/ButtonLoginDiscord.vue'
 
 import { SESSION } from '../keys'
 import { supabase } from '../supabase'

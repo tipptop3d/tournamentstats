@@ -26,7 +26,7 @@
 	--main-tint-80: #fcd1e9;
 	--main-tint-90: #fde8f4;
 
-	--dark-shade: #181A1B;
+	--dark-shade: #181a1b;
 	--dark-shade-shade-10: color-mix(in srgb, var(--dark-shade), black 10%);
 	--dark-shade-shade-20: color-mix(in srgb, var(--dark-shade), black 20%);
 	--dark-shade-shade-30: color-mix(in srgb, var(--dark-shade), black 30%);

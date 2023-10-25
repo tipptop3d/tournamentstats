@@ -2,9 +2,9 @@
 	<div class="grid">
 		<div class="grid-element-2">
 			<BaseButton @click="console.log('test')">Test</BaseButton>
-			<BaseButton @click="console.log('add')" icon="Favorite" position="left">add</BaseButton>
+			<BaseButtonIcon icon="favorite" position="left">add</BaseButtonIcon>
 			<BaseButton disabled>Disabled</BaseButton>
-			<BaseButtonIcon @click="console.log('favorite')">favorite</BaseButtonIcon>
+			<BaseButtonIconRound icon="upload_file"></BaseButtonIconRound>
 		</div>
 		<div class="grid-element">
 			<BaseInputTextField
@@ -24,10 +24,12 @@
 				placeholder="disabled"
 			/>
 		</div>
-		<BaseInputCheckbox id="c1">Test</BaseInputCheckbox>
-		<BaseInputCheckbox id="c2">Test2</BaseInputCheckbox>
-		<BaseInputCheckbox id="c3">Test§</BaseInputCheckbox>
-		<BaseInputFile id="file1" v-model="file" accept="image/*" :max-file-size-mb="1" />
+		<BaseInputCheckbox id="c1" v-model="tex">Test</BaseInputCheckbox>
+		<BaseInputCheckbox id="c2" v-model="tex">Test2</BaseInputCheckbox>
+		<BaseInputCheckbox id="c3" v-model="tex">Test§</BaseInputCheckbox>
+		<BaseInputFileButton id="file1" v-model="file" accept=".rofl" :max-file-size-mb="1">
+			Upload your .rofl
+		</BaseInputFileButton>
 		<BaseInputFileImagePreview
 			id="file2"
 			v-model="file"
@@ -43,6 +45,7 @@
 <script setup lang="ts">
 import BaseButton from '../components/BaseButton.vue'
 import BaseButtonIcon from '../components/BaseButtonIcon.vue'
+import BaseButtonIconRound from '../components/BaseButtonIconRound.vue'
 import BaseInputCheckbox from '../components/BaseInputCheckbox.vue'
 import BaseInputTextField from '../components/BaseInputTextField.vue'
 import BaseInputFile from '../components/BaseInputFile.vue'

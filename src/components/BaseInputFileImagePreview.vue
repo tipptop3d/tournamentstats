@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="input-wrapper">
 		<BaseInputFile
 			v-model="file"
 			:id="id"
@@ -12,9 +12,8 @@
 				@mouseleave="hoverUpload = false"
 				@drop.prevent="handleDrop"
 				@dragover.prevent
-				:style="{ width: width, height: height }"
 			>
-				<img v-if="imageURL" :src="imageURL" class="image" />
+				<img v-if="imageURL" :src="imageURL" class="image" :width="width" :height="height" />
 				<div
 					v-show="!imageURL || hoverUpload"
 					class="placeholder"
@@ -118,54 +117,37 @@ function removeImage() {
 </script>
 
 <style scoped>
-.wrapper {
-	display: inline-flex;
-	flex-direction: column;
+.input-wrapper {
+	height: v-bind(height);
+	width: v-bind(width);
 }
-
 .upload-box {
 	/* border-radius: 4px; */
-	height: 300px;
-	width: 300px;
-	margin: 12px;
+	height: 100%;
+	width: 100%;
 	position: relative;
 	cursor: pointer;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 1fr;
 	background: var(--background-shade-40);
+	outline: 2px dashed var(--light-shades);
 }
 .upload-box > :is(img, div) {
 	grid-area: 1 / 1 / 2 / 2;
 }
 
-.upload-box::after {
-	content: '';
-	pointer-events: none;
-	position: absolute;
-	top: -12px;
-	right: -12px;
-	bottom: -12px;
-	left: -12px;
-	border-radius: 4px;
-	outline: 2px dashed var(--light-shades);
-}
-
 .image {
-	height: 100%;
-	width: 100%;
 	transition: filter 0.4s ease-out;
 	z-index: 1;
 	object-fit: contain;
 }
 
-.upload-box:hover .image {
+.upload-box:hover > .image {
 	filter: brightness(20%);
 }
 
 .placeholder {
-	height: 100%;
-	width: 100%;
 	display: grid;
 	grid-auto-rows: auto min-content;
 	place-items: center;

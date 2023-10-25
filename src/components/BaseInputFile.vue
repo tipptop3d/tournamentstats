@@ -1,22 +1,15 @@
 <template>
-	<div>
-		<input
-			ref="input"
-			class="custom-file-input"
-			:id="id"
-			type="file"
-			:accept="accept"
-			@change="onFileChange"
-		/>
-		<label
-			tabindex="0"
-			:for="id"
-			@keyup.space.enter="input?.click()"
-			@click.prevent="input?.click()"
-		>
-			<slot> Upload </slot>
-		</label>
-	</div>
+	<input
+		ref="input"
+		class="custom-file-input"
+		:id="id"
+		type="file"
+		:accept="accept"
+		@change="onFileChange"
+	/>
+	<label tabindex="0" :for="id" @keyup.space.enter="input?.click()" @click.prevent="input?.click()">
+		<slot> Upload </slot>
+	</label>
 </template>
 
 <script setup lang="ts">

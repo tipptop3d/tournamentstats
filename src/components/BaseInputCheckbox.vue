@@ -1,14 +1,28 @@
 <template>
 	<div>
 		<label :for="id" class="label">
-			<input :id="id" type="checkbox" class="checkbox material-symbols-outlined" />
+			<input :id="id" type="checkbox" class="checkbox material-symbols-outlined" v-model="value" />
 			<slot></slot>
 		</label>
 	</div>
 </template>
 
 <script setup lang="ts">
-const props = withDefaults(defineProps<{ id: string }>(), {})
+import { computed } from 'vue'
+
+const props = withDefaults(defineProps<{ id: string; modelValue: boolean }>(), {})
+const emits = defineEmits<{
+	'update:modelValue': [boolean]
+}>()
+
+const value = computed({
+	get() {
+		return props.modelValue
+	},
+	set(value: boolean) {
+		emits('update:modelValue', value)
+	}
+})
 </script>
 
 <style scoped>
@@ -19,7 +33,6 @@ const props = withDefaults(defineProps<{ id: string }>(), {})
 	height: 22px;
 	border-radius: 4px;
 	background: var(--background-shade-40);
-	/* border: 1px solid gray; */
 	/* Adjusts the position of the checkboxes on the text baseline */
 	vertical-align: -6px;
 	/* Set here so that Windows' High-Contrast Mode can override */
@@ -35,8 +48,6 @@ const props = withDefaults(defineProps<{ id: string }>(), {})
 	font-size: 22px;
 	background-color: transparent;
 	transform: scale(0);
-	transition: 0.2s ease-in-out;
-	transition-property: background-color, transform;
 	border-radius: 4px;
 }
 

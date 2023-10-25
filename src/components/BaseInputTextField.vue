@@ -1,8 +1,8 @@
 <template>
-	<div class="field-group" :class="{ error: error, disabled: $attrs['disabled'] }">
+	<div class="input-wrapper" :class="{ error: error, disabled: $attrs['disabled'] }">
 		<div class="text-box">
 			<input
-				class="text-field"
+				class="text-input"
 				:id="id"
 				:type="type"
 				:required="required"
@@ -47,12 +47,7 @@ const emits = defineEmits<{
 </script>
 
 <style scoped>
-.field-group {
-	width: 250px;
-	margin-top: 8px;
-}
-
-.field-group.disabled {
+.input-wrapper.disabled {
 	cursor: not-allowed;
 	opacity: 0.5;
 }
@@ -61,7 +56,7 @@ const emits = defineEmits<{
 	position: relative;
 }
 
-.text-field {
+.text-input {
 	width: 100%;
 	height: 56px;
 	font-size: 16px;
@@ -74,23 +69,23 @@ const emits = defineEmits<{
 	/* outline:  */
 }
 
-.text-field::after {
+.text-input::after {
 	opacity: 0;
 	outline: 2px solid var(--font-color);
 	transition: outline-color 0.1s;
 }
-.text-field::after:focus {
+.text-input::after:focus {
 	opacity: 1;
 	outline: 2px solid var(--font-color);
 }
 
-.text-field::placeholder {
+.text-input::placeholder {
 	pointer-events: none;
 	user-select: none;
 	color: transparent;
 }
 
-.text-field ~ .field-label {
+.text-input ~ .field-label {
 	background-color: transparent;
 	cursor: text;
 	position: absolute;
@@ -104,14 +99,14 @@ const emits = defineEmits<{
 	color: var(--light-accent);
 }
 
-.text-field:placeholder-shown ~ .field-label {
+.text-input:placeholder-shown ~ .field-label {
 	top: 50%;
 	transform: translateY(-50%);
 	margin-left: 16px;
 	font-size: 16px;
 }
 
-.text-field:focus ~ .field-label {
+.text-input:focus ~ .field-label {
 	font-size: 14px;
 	top: 4px;
 	margin-left: 12px;
@@ -144,24 +139,24 @@ const emits = defineEmits<{
 	pointer-events: none;
 }
 
-.field-group.error {
+.input-wrapper.error {
 	color: var(--error-color);
 }
 
-.field-group.error .text-field {
+.input-wrapper.error .text-input {
 	outline: 2px solid var(--error-color);
 	padding-right: 52px;
 }
 
-.field-group.error .text-field:focus {
+.input-wrapper.error .text-input:focus {
 	outline: 2px solid var(--error-color);
 }
 
-.field-group.error .field-label {
+.input-wrapper.error .field-label {
 	color: var(--error-color);
 }
 
-.field-group.error .supporting-text {
+.input-wrapper.error .supporting-text {
 	color: var(--error-color);
 }
 </style>
