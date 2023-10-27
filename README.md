@@ -21,5 +21,3 @@ TournamentStats is a project designed to generate statistics for custom League o
    - Data Scraping from Replay Files: Alternatively, we may scrape data from replay files as an alternative method of gathering match statistics.
 
 4. **Public Stats Viewing Page**: Once the tournament data is collected and matches are added, users will have access to a public stats viewing page. This page will display detailed statistics, allowing everyone to analyze the tournament's performance data.
-
-We are continuously working to improve and expand the functionality of TournamentStats. Stay tuned for updates and enhancements to make your tournament tracking experience even better!
