@@ -1,46 +1,11 @@
-# tournamentstats
+# TournamentStats
 
-This template should help get you started developing with Vue 3 in Vite.
+A project to generate stats for a custom League of Legends tournament, similar like (gol.gg)[https://www.gol.gg], to see which champion performed best or find out which player had the most pentakills! Currently the app is far from being usable, but in the future the flow should be like this:
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-yarn
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-yarn dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-yarn build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
-```
+- Tournament Owner / Admin creates an account (maybe will simplify this process to accountless?)
+- Creates a Tournament, names it, uploads Tournament Logo
+- Redirected to Dashboard, is able to:
+  - Create Teams with Name and Logo
+  - Add matches
+    - By Riot API design, it is not longer possible to fetch data for custom games created by players. To bypass it the will either have to create its own tournament codes (more user friendly) or scrap data from Replay Files
+- Public Stats viewing page
