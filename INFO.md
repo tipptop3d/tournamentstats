@@ -1,58 +1,65 @@
-# Routes
+# Structure of TournamentStats
+
+## Routes
 
 - Homepage
 - Login
 - Signup
 - Dashboard
-	- Overview
-	- Teams
-	- Matches
-		- :matchId
-	- Stats (coming soon)
-	- Settings
- 
-# Components
+  - Overview
+  - Teams
+  - Matches
+    - :matchId
+  - Stats (coming soon)
+  - Settings
 
-## Input
+## Components
+
+### Input
+
 - BaseButton
-	- ButtonCTA
-	- ButtonIconRound
-	- ButtonFilled
-	- ButtonFilledIcon
-	- ButtonText
-	- ButtonDiscordLogin
+  - ButtonCTA
+  - ButtonIconRound
+  - ButtonFilled
+  - ButtonFilledIcon
+  - ButtonText
+  - ButtonDiscordLogin
 - InputFile
-	- InputFileButton
-	- InputFileImagePreview
+  - InputFileButton
+  - InputFileImagePreview
 - Checkbox
 - Switch
 - InputText
 - InputTextInline
 - DropdownMenu
 
-## Global Components
+### Global Components
+
 - Logo
 - HeaderNavigationEntry
 - Header
 - Footer
 
-## Dashboard Components
+### Dashboard Components
 
 - ShortHeader
 - SideNavigation
 - SideNavigationLogo
 - SideNavigationEntry
 
-### Teams
+#### Teams
+
 - TeamCard
 - TeamDetailsOverlay
 - TeamDetailsPlayer
 
-### Matches
+#### Matches
+
 - MatchCard
 - GameCard
 
-## Icons
+### Icons
+
 - RocketIcon
 - TeamIcon
 - PlayerIcon
@@ -66,5 +73,6 @@
 - RoleBotIcon
 - RoleSuppIcon
 
-## Sonstige
+### Sonstige
+
 - ImportantText
