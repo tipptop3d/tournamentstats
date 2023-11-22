@@ -6,7 +6,7 @@
 	--main-color: #ee1993;
 	--main-alpha: #ee199300;
 
-	--main-shade-10: #d61784;
+	/* --main-shade-10: #d61784;
 	--main-shade-20: #be1476;
 	--main-shade-30: #a71267;
 	--main-shade-40: #8f0f58;
@@ -24,7 +24,7 @@
 	--main-tint-60: #f8a3d4;
 	--main-tint-70: #fabadf;
 	--main-tint-80: #fcd1e9;
-	--main-tint-90: #fde8f4;
+	--main-tint-90: #fde8f4; */
 
 	--dark-shade: #181a1b;
 	--dark-shade-shade-10: color-mix(in srgb, var(--dark-shade), black 10%);
