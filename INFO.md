@@ -2,16 +2,19 @@
 
 ## Routes
 
-- Homepage
+- Home
 - Login
 - Signup
-- Dashboard
-  - Overview
-  - Teams
-  - Matches
-    - :matchId
-  - Stats (coming soon)
-  - Settings
+- tournament (redirect)
+  - create
+  - :tournamentId
+    - Dashboard
+      - Overview
+      - Teams
+      - Matches
+        - :matchId
+      - Stats (coming soon)
+      - Settings
 
 ## Components
 
@@ -24,7 +27,7 @@
   - ButtonFilledIcon
   - ButtonText
   - ButtonDiscordLogin
-- InputFile
+- UploadFile
   - InputFileButton
   - InputFileImagePreview
 - Checkbox

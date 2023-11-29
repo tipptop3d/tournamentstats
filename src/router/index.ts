@@ -16,10 +16,6 @@ const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
-			path: '/debug',
-			component: () => import('../debug/DebugView.vue')
-		},
-		{
 			path: '/',
 			name: 'home',
 			component: HomeView
@@ -33,31 +29,64 @@ const router = createRouter({
 		{
 			path: '/signup',
 			name: 'signup',
-			component: () => import('../views/SignUpView.vue'),
+			component: () => import('../views/SignupView.vue'),
 			meta: { title: 'Signup - TournamentStats' }
 		},
 		{
 			path: '/tournament',
-			// component: () => import('../views/TournamentView.vue'),
 			redirect: { name: 'create' },
 			children: [
 				{
 					path: 'create',
 					name: 'create',
-					component: () => import('../views/TournamentCreateView.vue'),
+					component: () => import('../views/tournament/CreateView.vue'),
 					meta: { title: 'Create Tournament - TournamentStats', requiresAuth: true }
 				},
 				{
 					path: ':id',
 					name: 'tournament',
-					component: () => import('../views/TournamentDetailsView.vue'),
+					component: () => import('../views/tournament/TournamentIdView.vue'),
 					meta: { title: 'Name - TournamentStats' },
 					children: [
 						{
 							path: 'dashboard',
 							name: 'tournamentDashbord',
-							component: () => import('../views/TournamentDashboardView.vue'),
-							meta: { title: 'Name Dashboard - TournamentStats', requiresAuth: true, isOwner: true }
+							component: () => import('../views/tournament/dashboard/DashboardView.vue'),
+							meta: { title: 'Name Dashboard - TournamentStats', requiresAuth: true, isOwner: true },
+							children: [
+								{
+									path: 'overview',
+									name: 'overview',
+									component: () => import('../views/tournament/dashboard/OverviewView.vue'),
+									meta: { title: 'Overview - TournamentStats' }
+								},
+								{
+									path: 'teams',
+									name: 'dashboardTeams',
+									component: () => import('../views/tournament/dashboard/TeamsView.vue'),
+									meta: { title: 'Teams - TournamentStats' }
+								},
+								{
+									path: 'matches',
+									name: 'dashboardMatches',
+									component: () => import('../views/tournament/dashboard/MatchesView.vue'),
+									meta: { title: 'Matches - TournamentStats' },
+									children: [
+										{
+											path: ':matchId',
+											name: 'dashboardSpecificMatch',
+											component: () => import('../views/tournament/dashboard/MatchIdView.vue'),
+											meta: { title: 'G2 vs BLG - TournamentStats' }
+										}
+									]
+								},
+								{
+									path: 'settings',
+									name: 'dashboardSettings',
+									component: () => import('../views/tournament/dashboard/SettingsView.vue'),
+									meta: { title: 'Settings - TournamentStats' }
+								},
+							]
 						}
 					]
 				}

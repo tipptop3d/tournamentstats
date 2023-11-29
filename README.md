@@ -1,23 +1,43 @@
 # TournamentStats
 
-TournamentStats is a project designed to generate statistics for custom League of Legends tournaments, similar to [gol.gg](https://www.gol.gg). It allows users to track which champion performed the best and discover which player achieved the most pentakills. While the current version of the app is not fully functional, the planned workflow for the future is as follows:
+A website for gathering and analyzing League of Legends Statistics of custom tournaments written in Vue.
 
-## Getting Started
+## Key Features
 
-1. **Account Creation**: Tournament Owners or Admins will need to create an account. We are considering simplifying this process to make it accountless in the future.
+- Login/Signup
+- Riot Games API integration
+- Presenting stats in a modern way
 
-2. **Creating a Tournament**: After logging in, users can create a tournament and provide a unique name for it. They also have the option to upload a tournament logo to personalize their event.
+### Planned
 
-3. **Dashboard**: Once the tournament is created, users are redirected to the dashboard. From the dashboard, they can:
+- Tournament Codes
+- Option for bracket generation etc.? (No need for another tournament platform)
+- much more
 
-   - Create Teams: Users can set up teams, complete with a name and logo.
+## Installation
 
-   - Add Matches: Users have the ability to add matches to the tournament.
+Clone Project:
 
-   **Note**: Due to changes in the Riot API design, it is no longer possible to fetch data for custom games created by players. To work around this limitation, we are considering two potential solutions:
+```bash
+git clone https://github.com/tipptop3d/tournamentstats.git
+```
 
-   - Creating Our Own Tournament Codes: This would provide a more user-friendly way to track custom games.
+Install dependencies:
 
-   - Data Scraping from Replay Files: Alternatively, we may scrape data from replay files as an alternative method of gathering match statistics.
+```bash
+cd tournamentstats
+npm install
+```
 
-4. **Public Stats Viewing Page**: Once the tournament data is collected and matches are added, users will have access to a public stats viewing page. This page will display detailed statistics, allowing everyone to analyze the tournament's performance data.
+Create .env file for API Keys with the following content:
+
+```file
+VITE_SUPABASE_URL="YOUR_SUPABASE_BACKEND_URL"
+VITE_SUPABASE_ANON_KEY="YOUR_ANON_KEY"
+```
+
+Start frontend server:
+
+```bash
+npm run dev
+```

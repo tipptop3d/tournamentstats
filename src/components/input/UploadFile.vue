@@ -17,15 +17,12 @@ import { ref } from 'vue'
 
 const input = ref<HTMLInputElement>()
 
-const props = withDefaults(
-	defineProps<{
-		id: string
-		accept: string
-		maxFileSizeMb: number
-		modelValue: File | null
-	}>(),
-	{}
-)
+defineProps<{
+	id: string
+	accept: string
+	maxFileSizeMb: number
+	modelValue: File | null
+}>()
 
 const emits = defineEmits<{
 	'update:modelValue': [file: File | null]
