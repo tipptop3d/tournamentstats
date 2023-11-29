@@ -13,7 +13,7 @@ body {
 	font-weight: normal;
 	line-height: 1.6;
 	font-family: 'Roboto Flex', sans-serif;
-
+	font-size: 16px;
 }
 
 input,
@@ -26,4 +26,56 @@ button {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+}
+
+.logo-font-1 {
+	font-size: 4.8rem;
+	font-variation-settings:
+		"wght" 700,
+		"wdth" 31 "GRAD" 109 "XOPQ" 70 "YTUC" 618 "YTFI" 644;
+}
+
+.logo-font-2 {
+	font-size: 3.75rem;
+	font-variation-settings:
+		"wght" 650,
+		"wdth" 34 "GRAD" 150 "YTUC" 760;
+}
+
+.special-text {
+	font-size: 2.4rem;
+	font-variation-settings:
+		"wght" 700 "wdth" 31 "GRAD" 109 "XOPQ" 70 "YOPQ" 79 "YTLC" 479 "YTUC" 636 "YTAS" 649 "YTDE" -165 "YTFI" 665;
+}
+
+.heading-1 {
+	font-size: 1.5rem;
+	font-variation-settings:
+		"wght" 650 "wdth" 65 "GRAD" 50 "XOPQ" 80 "YTUC" 671 "YTAS" 733 "YTDE" -184 "YTFI" 701;
+}
+
+.heading-2 {
+	font-size: 1.25rem;
+	font-variation-settings: "wght" 650 "wdth" 70 "GRAD" 50 "XOPQ" 80 "YTUC" 671 "YTAS" 733 "YTDE" -184 "YTFI" 701;
+}
+
+.button-text {
+	font-size: 1rem;
+	--grad: 50;
+	font-variation-settings: "wght" 650 "wdth" 70 "GRAD" var(--grad) "XOPQ" 80 "YTUC" 671 "YTAS" 738 "YTDE" -190 "YTFI" 701;
+}
+
+.paragraph-text {
+	font-size: 1rem;
+	font-variation-settings: "wght" 600 "wdth" 80 "YTUC" 699 "YOPQ" 85 "YTAS" 738 "YTDE" -190;
+}
+
+.supporting-text {
+	font-size: 0.6rem;
+	font-variation-settings: "wght" 400 "wdth" 80 "YTUC" 699 "YOPQ" 85 "YTAS" 738 "YTDE" -190;
+}
+
+.footer-text {
+	font-size: 0.75rem;
+	font-variation-settings: "wght" 400 "wdth" 80 "YTUC" 699 "YOPQ" 85 "YTAS" 738 "YTDE" -190;
 }

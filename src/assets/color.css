@@ -1,0 +1,11 @@
+:root {
+	--main-color-1: #FC306D;
+	--main-color-2: #EE1993;
+	--main-gradient: linear-gradient(45deg,
+			var(--main-color-1),
+			var(--main-color-2));
+	--error-color: #EF2E4B;
+	--accent-color: #9D9CB7;
+	--text-color: #F3F4F1;
+	--background-color: #181A1B;
+}
